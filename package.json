@@ -1,0 +1,19 @@
+{
+    "name": "blog-cms",
+    "version": "1.0.0",
+    "description": "A CMS-style blog site",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "body-parser": "^1.19.0",
+      "express-session": "^1.17.2",
+      "mongoose": "^6.1.0",
+      "bcrypt": "^5.0.1"
+      // Add other dependencies as needed for your project
+    }
+  }
+  
+  
