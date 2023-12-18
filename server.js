@@ -1,7 +1,13 @@
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const { Sequelize } = require('sequelize');
+
+// Option 3: Passing parameters separately (other dialects)
+const sequelize = new Sequelize('mvc_tech', 'root', 'nylaforever21!', {
+  host: 'localhost:3306',
+  dialect:'mysql' 
+});
 
 // Initialize Express app
 const app = express();
@@ -16,9 +22,6 @@ app.use(session({
   saveUninitialized: true
 }));
 
-// Database connection setup (using MongoDB as an example)
-mongoose.connect('mongodb://localhost/blogDB', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.set('useCreateIndex', true);
 
 // Define mongoose schema and models (User, BlogPost, Comment) - similar to previous example
 
@@ -27,6 +30,15 @@ mongoose.set('useCreateIndex', true);
 // Homepage route
 app.get('/', (req, res) => {
   // Your implementation for homepage rendering
+});
+
+// Route with a parameter
+app.get('/api/connect/' + sequelize, (req, res) => {
+  // Accessing the userId parameter from the URL
+  const sequalize = req.params.sequalize;
+
+  // Send a response
+  res.send(`sqequalize is: ${sequalize}`);
 });
 
 // Other routes (e.g., login, signup, dashboard, etc.) handling user interactions...

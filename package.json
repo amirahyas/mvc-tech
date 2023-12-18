@@ -11,9 +11,21 @@
       "body-parser": "^1.19.0",
       "express-session": "^1.17.2",
       "mongoose": "^6.1.0",
-      "bcrypt": "^5.0.1"
-      // Add other dependencies as needed for your project
+      "bcrypt": "^5.0.1",
+      "bulma": "^0.9.0",
+      "connect-session-sequelize": "^6.1.1",
+      "dotenv": "^8.2.0",
+      "express-handlebars": "^4.0.4",
+      "mysql2": "^2.1.0",
+      "nodemon": "^2.0.4",
+      "sequelize": "^5.21.13"
+    },
+    "devDependencies": {
+      "@creativebulma/bulma-divider": "^1.1.0",
+      "jest": "^26.0.1"
     }
   }
+
+  
   
   
