@@ -3,11 +3,20 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const { Sequelize } = require('sequelize');
 
+
+const PORT = process.env.PORT || 3000;
 // Option 3: Passing parameters separately (other dialects)
 const sequelize = new Sequelize('mvc_tech', 'root', 'nylaforever21!', {
-  host: 'localhost:3306',
+  host: 'localhost',
   dialect:'mysql' 
 });
+
+sequelize.authenticate()
+  .then(() =>{
+    console.log("database connected")
+    // app.listen(`Server started on port ${PORT}`);
+  }) 
+  .catch(err => console.log('Error: ' + err));
 
 // Initialize Express app
 const app = express();
@@ -32,19 +41,10 @@ app.get('/', (req, res) => {
   // Your implementation for homepage rendering
 });
 
-// Route with a parameter
-app.get('/api/connect/' + sequelize, (req, res) => {
-  // Accessing the userId parameter from the URL
-  const sequalize = req.params.sequalize;
-
-  // Send a response
-  res.send(`sqequalize is: ${sequalize}`);
-});
 
 // Other routes (e.g., login, signup, dashboard, etc.) handling user interactions...
 
 // Start the server
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
